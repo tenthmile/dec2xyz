@@ -47,6 +47,8 @@ void print_help(char** argv, std::ostream &output=std::cerr, bool extended=false
 }
 
 int main(int argc, char** argv) {
+  std::ios_base::sync_with_stdio(false);
+  
   bool spreadSheetCounting = false;
   bool notZeroIndexed = false;
   bool expressionUsed = false;
