@@ -2,6 +2,7 @@
 Convert (positive) numbers from the command line to any other representation.
 
 # Examples
+```bash
 $ seq 0 16 | ./dec2xyz
 0
 1
@@ -49,8 +50,10 @@ Y
 Z
 AA
 AB
+```
 
 # Exotic Examples
+```bash
 $ echo 0 | ./dec2xyz -e "[[-[]"
 [
 
@@ -59,4 +62,4 @@ $ seq 0 3 | ./dec2xyz -1 -s "|"
 |
 ||
 |||
-
+```
