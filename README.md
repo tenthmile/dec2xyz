@@ -65,7 +65,7 @@ $ printf "%4s\n" $(seq 1 8 | ./dec2xyz -1 10) | tr " " "1"
 1001
 1000
 
-$ printf "%4s\n" $(seq 1 128 | ./dec2xyz -1 -e "[f-a][9-0]") | tr " " "1"
+$ printf "%4s\n" $(seq 1 128 | ./dec2xyz -1 -e "[f-a][9-0]") | tr " " "f"
 ffff
 fffe
 fffd

@@ -38,7 +38,7 @@ void print_help(char** argv, std::ostream &output=std::cerr, bool extended=false
            << "$ seq 1 128 | "  << argv[0] << " 10" << std::endl << "X\nY\nZ\nAA\nAB\n" << std::endl << std::endl
            << "Negative Number Examples:" << std::endl
            << "$ printf \"%4s\\n\" $(seq 1 8 | ./dec2xyz -1 10) | tr \" \" \"1\"" << std::endl << "1111\n1110\n1101\n1100\n1011\n1010\n1001\n1000\n" << std::endl
-           << "$ printf \"%4s\\n\" $(seq 1 128 | ./dec2xyz -1 -e \"[f-a][9-0]\") | tr \" \" \"1\"" << std::endl << "ffff\nfffe\nfffd\n...\nff82\nff81\nff80\n" << std::endl << std::endl
+           << "$ printf \"%4s\\n\" $(seq 1 128 | ./dec2xyz -1 -e \"[f-a][9-0]\") | tr \" \" \"f\"" << std::endl << "ffff\nfffe\nfffd\n...\nff82\nff81\nff80\n" << std::endl << std::endl
            << "Exotic Examples:" << std::endl
            << "$ echo 0 | "  << argv[0] << " -e \"[[-[]\"" << std::endl << "[\n" << std::endl
            << "$ seq 0 3 | "  << argv[0] << " -1 -s \"|\"" << std::endl << "\n|\n||\n|||\n" << std::endl
