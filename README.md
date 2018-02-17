@@ -52,6 +52,30 @@ AA
 AB
 ```
 
+
+# Negative Number Examples
+```bash
+printf "%4s\n" $(seq 1 8 | ./dec2xyz -1 10) | tr " " "1"
+1111
+1110
+1101
+1100
+1011
+1010
+1001
+1000
+
+$ printf "%4s\n" $(seq 1 128 | ./dec2xyz -1 -e "[f-a][9-0]") | tr " " "1"
+ffff
+fffe
+fffd
+...
+ff82
+ff81
+ff80
+```
+
+
 # Exotic Examples
 ```bash
 $ echo 0 | ./dec2xyz -e "[[-[]"
