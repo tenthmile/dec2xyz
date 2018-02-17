@@ -55,7 +55,7 @@ AB
 
 # Negative Number Examples
 ```bash
-printf "%4s\n" $(seq 1 8 | ./dec2xyz -1 10) | tr " " "1"
+$ printf "%4s\n" $(seq 1 8 | ./dec2xyz -1 10) | tr " " "1"
 1111
 1110
 1101
