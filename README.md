@@ -1,3 +1,8 @@
+# Compile
+```bash
+$ g++ -o dec2xyz dec2xyz.cpp -lgmp
+```
+
 # dec2xyz
 Convert (positive) numbers from the command line to any other representation.
 
