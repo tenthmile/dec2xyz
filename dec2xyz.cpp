@@ -14,6 +14,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include <assert.h>
 #include <algorithm>
 #include <unistd.h>
+#include "big_integer.hpp"
 
 std::string letters = "0123456789abcdef"; // default output is number to lowercase hexadecimal
 
@@ -48,11 +49,15 @@ void print_help(char** argv, std::ostream &output=std::cerr, bool extended=false
 
 int main(int argc, char** argv) {
   std::ios_base::sync_with_stdio(false);
-  
+
+  std::cout << argv[0] << std::endl;
+
+  // settings
   bool spreadSheetCounting = false;
   bool notZeroIndexed = false;
   bool expressionUsed = false;
-  
+
+  // read parameters
   int opt;
   while ((opt = getopt(argc, argv, "e:s1h")) != -1) {
     switch (opt) {
@@ -135,25 +140,30 @@ int main(int argc, char** argv) {
   }
   if (!expressionUsed && optind < argc)
     letters = std::string(argv[optind]);
-  
+
+  // calculation
   bool gotInput = false;
-  int letterCount = letters.size();
-  int number;
-  while (std::cin >> number) {
+  unsigned long int letterCount = letters.size();
+  std::string input;
+  BigInteger number;
+  while (std::cin >> input) {
+    number = input;
+    std::cout << number << std::endl;
+
     if (notZeroIndexed)
-      number--;
+      number -= 1;
     
     gotInput = true;
-    std::stringstream ss;
-    if (number == 0) {
+    std::ostringstream ss;
+    if (number == 0ul) {
       ss << letters[0];
     } else {
-      while ((number > 0 && !spreadSheetCounting) || (number >= 0 && spreadSheetCounting)) {
-        int unit = number % letterCount;
-        ss << letters[unit];
-        number = number / letterCount;
+      while ((number > 0ul && !spreadSheetCounting) || (number >= 0ul && spreadSheetCounting)) {
+        unsigned long int remainder = number % letterCount;
+        ss << letters[remainder];
+        number /= letterCount;
         if (spreadSheetCounting)
-          number--;
+          number -= 1;
       }
     }
     std::string output = ss.str();
