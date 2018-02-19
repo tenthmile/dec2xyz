@@ -3,7 +3,7 @@
 
 #include <gmp.h>
 #include <string>
-#include <iostream>
+#include <sstream>
 
 class BigInteger {
 private:
@@ -98,6 +98,16 @@ public:
     return *this;
   }
 
+  BigInteger &operator=(signed long int val) {
+    mpz_set_si(value, val);
+    return *this;
+  }
+
+  BigInteger &operator=(unsigned long int val) {
+    mpz_set_ui(value, val);
+    return *this;
+  }
+
   BigInteger &operator=(char *str) {
     mpz_set_str(value, str, 10);
     return *this;
@@ -125,6 +135,16 @@ public:
 
   BigInteger &operator-=(unsigned long int val) {
     mpz_sub_ui(value, value, val);
+    return *this;
+  }
+
+  BigInteger &operator*=(signed long int val) {
+    mpz_mul_si(value, value, val);
+    return *this;
+  }
+
+  BigInteger &operator*=(unsigned long int val) {
+    mpz_mul_ui(value, value, val);
     return *this;
   }
 

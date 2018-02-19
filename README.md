@@ -27,6 +27,9 @@ e
 f
 10
 
+$ echo f | ./dec2xyz -n
+15
+
 $ seq 0 8 | ./dec2xyz 01
 0
 1
@@ -37,6 +40,9 @@ $ seq 0 8 | ./dec2xyz 01
 110
 111
 1000
+
+$ echo 111 | ./dec2xyz -n 01
+7
 
 $ seq 8 11 | ./dec2xyz -e "[0-9][A-F]"
 8
@@ -55,6 +61,9 @@ Y
 Z
 AA
 AB
+
+$ echo AAAA | ./dec2xyz -n -s -e "[A-Z]"
+18278
 ```
 
 
@@ -91,4 +100,7 @@ $ seq 0 3 | ./dec2xyz -1 -s "|"
 |
 ||
 |||
+
+$ echo aaaaa | ./dec2xyz -n -1 -s a
+5
 ```
