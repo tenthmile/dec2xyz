@@ -104,3 +104,29 @@ $ seq 0 3 | ./dec2xyz -1 -s "|"
 $ echo aaaaa | ./dec2xyz -n -1 -s a
 5
 ```
+
+
+# Create negative numbers more easily
+```bash
+dec2xyzNegativeToDec() {
+    for last in "$@"; do true; done
+    units=$1
+    lastChar=$(echo $last | tr -d "[" | head -c 1)
+    shift
+    # bash
+    eval dec2xyz -1 "$@" | xargs -n1 printf "%${units}s\n" | tr " " $lastChar
+    # zsh
+    # eval dec2xyz -1 ${(q):-$@} | xargs -n1 printf "%${units}s\n" | tr " " $lastChar
+}
+
+$ dec2xyzNegative 8 -e "[f-a][9-0]"
+20000
+ffffb1e0
+$ dec2xyzNegative 4 10 
+1
+1111
+2
+1110
+8 
+1000
+```
